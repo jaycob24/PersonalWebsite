@@ -24,7 +24,7 @@
       font-weight: bold;
       color: white;
       transform-origin: top;
-      animation: squash-then-grow 4s infinite;
+      animation: squash-then-grow 6s linear infinite;
     }
 
     @keyframes squash-then-grow {
@@ -34,27 +34,33 @@
         opacity: 1;
       }
 
-      25% {
-        transform: scaleY(0); /* Сплющивание к верхней */
+      20% {
+        transform: scaleY(0);
         transform-origin: top;
         opacity: 1;
       }
 
-      26% {
-        opacity: 0; /* Исчезновение */
+      21% {
+        opacity: 0;
         transform: translateY(100%) scaleY(0);
         transform-origin: bottom;
       }
 
-      27% {
-        opacity: 1; /* Появление снизу */
+      22% {
+        opacity: 1;
         transform: translateY(0%) scaleY(0);
+        transform-origin: bottom;
+      }
+
+      40% {
+        transform: scaleY(1);
         transform-origin: bottom;
       }
 
       100% {
         transform: scaleY(1);
-        transform-origin: bottom; /* Рост от нижней грани */
+        transform-origin: bottom;
+        opacity: 1;
       }
     }
   </style>
