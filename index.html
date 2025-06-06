@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Личный сайт</title>
+  <title>Плавная анимация текста</title>
   <style>
     body {
       display: flex;
@@ -25,29 +25,44 @@
     .words {
       display: flex;
       flex-direction: column;
-      animation: rotateWords 8s steps(1) infinite;
+      animation: scrollWords 10s linear infinite;
     }
 
     .word {
-      height: 2em; /* Должно совпадать с .text-rotator */
+      height: 2em;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    @keyframes rotateWords {
-      0% { transform: translateY(0%); }
-      20% { transform: translateY(-100%); }
-      40% { transform: translateY(-200%); }
-      60% { transform: translateY(-300%); }
-      80% { transform: translateY(-400%); }
-      100% { transform: translateY(0%); } /* Сброс для зацикливания */
+    /* Добавим копии слов для бесшовной прокрутки */
+    .words::after {
+      content: 'ПриветМирHTMLCSSАнимация';
+      display: block;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
+    @keyframes scrollWords {
+      0% {
+        transform: translateY(0%);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
     }
   </style>
 </head>
 <body>
   <div class="text-rotator">
     <div class="words">
+      <div class="word">Привет</div>
+      <div class="word">Мир</div>
+      <div class="word">HTML</div>
+      <div class="word">CSS</div>
+      <div class="word">Анимация</div>
+      <!-- Повторяем те же слова для плавности -->
       <div class="word">Привет</div>
       <div class="word">Мир</div>
       <div class="word">HTML</div>
