@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Прокрутка по одному слову</title>
+  <meta charset="UTF-8">
+  <title>кхе</title>
   <style>
-    body {
-      background: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .text-rotator {
-      font-size: 2em;
+    body {
+      background: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #222;
+    }
+
+    .container {
+      font-size: 2.5em;
+      line-height: 1.4;
+    }
+
+    .line {
+      display: flex;
+      gap: 0.5em;
+      align-items: flex-end;
+      border-bottom: 1px solid #888;
+      padding-bottom: 0.1em;
+      margin-bottom: 0.3em;
+      flex-wrap: wrap;
+    }
+
+    .animated-word-container {
       height: 1.2em;
       overflow: hidden;
-      color: white;
-      font-family: sans-serif;
-      --step: 1.2em; /* Высота одного слова */
+      display: inline-block;
+      position: relative;
+      --step: 1.2em;
     }
 
-    .words {
+    .animated-words {
       display: flex;
       flex-direction: column;
       animation: scrollWords 8s infinite;
@@ -32,33 +53,43 @@
       height: var(--step);
       display: flex;
       align-items: center;
-      justify-content: center;
     }
 
     @keyframes scrollWords {
       0%    { transform: translateY(0); }
-      20%   { transform: translateY(0); }
+      12.5% { transform: translateY(0); }
 
       25%   { transform: translateY(calc(-1 * var(--step))); }
-      45%   { transform: translateY(calc(-1 * var(--step))); }
+      37.5% { transform: translateY(calc(-1 * var(--step))); }
 
       50%   { transform: translateY(calc(-2 * var(--step))); }
-      70%   { transform: translateY(calc(-2 * var(--step))); }
+      62.5% { transform: translateY(calc(-2 * var(--step))); }
 
       75%   { transform: translateY(calc(-3 * var(--step))); }
-      95%   { transform: translateY(calc(-3 * var(--step))); }
+      87.5% { transform: translateY(calc(-3 * var(--step))); }
 
-      100%  { transform: translateY(0); } /* сброс для цикла */
+      100%  { transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="text-rotator">
-    <div class="words">
-      <div class="word">Привет</div>
-      <div class="word">Мир</div>
-      <div class="word">HTML</div>
-      <div class="word">CSS</div>
+  <div class="container">
+    <div class="line">ПРИВЕТ</div>
+    <div class="line">
+      <span>Я</span>
+      <span style="flex: 1; border-bottom: 1px solid #888;"></span>
+      <span>КЛЕВАКИН ДИМА</span>
+    </div>
+    <div class="line">
+      СДЕЛАЮ ДЛЯ ТЕБЯ КРУТОЙ
+      <div class="animated-word-container">
+        <div class="animated-words">
+          <div class="word">ДИЗАЙН</div>
+          <div class="word">МОНТАЖ</div>
+          <div class="word">3D-МОДЕЛЬ</div>
+          <div class="word">ВЕБСАЙТ</div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
