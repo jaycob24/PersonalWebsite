@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сплющивание текста</title>
+  <title>Сплющивание и восстановление</title>
   <style>
     body {
       background: #111;
@@ -14,25 +14,54 @@
       margin: 0;
     }
 
-    .squash-text {
+    .wrapper {
+      position: relative;
+      height: 100px;
+    }
+
+    .text {
       font-size: 80px;
       font-weight: bold;
       color: white;
-      transform-origin: top; /* Верхняя грань остаётся на месте */
-      animation: squash 2s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
+      transform-origin: top;
+      animation: squash-then-grow 4s infinite;
     }
 
-    @keyframes squash {
+    @keyframes squash-then-grow {
       0% {
         transform: scaleY(1);
+        transform-origin: top;
+        opacity: 1;
       }
+
+      25% {
+        transform: scaleY(0); /* Сплющивание к верхней */
+        transform-origin: top;
+        opacity: 1;
+      }
+
+      26% {
+        opacity: 0; /* Исчезновение */
+        transform: translateY(100%) scaleY(0);
+        transform-origin: bottom;
+      }
+
+      27% {
+        opacity: 1; /* Появление снизу */
+        transform: translateY(0%) scaleY(0);
+        transform-origin: bottom;
+      }
+
       100% {
-        transform: scaleY(0.1);
+        transform: scaleY(1);
+        transform-origin: bottom; /* Рост от нижней грани */
       }
     }
   </style>
 </head>
 <body>
-  <div class="squash-text">Слово</div>
+  <div class="wrapper">
+    <div class="text">Слово</div>
+  </div>
 </body>
 </html>
