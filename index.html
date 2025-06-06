@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сплющивание и восстановление</title>
+  <title>Сплющивание с телепортом и паузой</title>
   <style>
     body {
       background: #111;
@@ -14,9 +14,10 @@
       margin: 0;
     }
 
-    .wrapper {
+    .container {
       position: relative;
       height: 100px;
+      overflow: hidden;
     }
 
     .text {
@@ -29,36 +30,37 @@
 
     @keyframes squash-then-grow {
       0% {
-        transform: scaleY(1);
+        transform: scaleY(1) translateY(0);
         transform-origin: top;
         opacity: 1;
       }
 
       20% {
-        transform: scaleY(0);
+        transform: scaleY(0.05) translateY(0);
         transform-origin: top;
         opacity: 1;
       }
 
       21% {
-        opacity: 0;
-        transform: translateY(100%) scaleY(0);
+        transform: scaleY(0.05) translateY(100%);
         transform-origin: bottom;
+        opacity: 0;
       }
 
       22% {
-        opacity: 1;
-        transform: translateY(0%) scaleY(0);
+        transform: scaleY(0.05) translateY(0%);
         transform-origin: bottom;
+        opacity: 1;
       }
 
       40% {
-        transform: scaleY(1);
+        transform: scaleY(1) translateY(0%);
         transform-origin: bottom;
+        opacity: 1;
       }
 
       100% {
-        transform: scaleY(1);
+        transform: scaleY(1) translateY(0%);
         transform-origin: bottom;
         opacity: 1;
       }
@@ -66,7 +68,7 @@
   </style>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="container">
     <div class="text">Слово</div>
   </div>
 </body>
