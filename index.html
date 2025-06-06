@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Плавная анимация текста</title>
+  <title>Плавная анимация текста — компактная</title>
   <style>
     body {
       display: flex;
@@ -14,7 +14,7 @@
     }
 
     .text-rotator {
-      height: 2em; /* Высота одного слова */
+      height: 1.4em; /* Меньше высота строки */
       overflow: hidden;
       font-size: 2em;
       color: white;
@@ -29,19 +29,11 @@
     }
 
     .word {
-      height: 2em;
+      height: 1.4em;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    /* Добавим копии слов для бесшовной прокрутки */
-    .words::after {
-      content: 'ПриветМирРРHTMLCSSАнимация';
-      display: block;
-      height: 0;
-      overflow: hidden;
-      visibility: hidden;
+      line-height: 1.2;
     }
 
     @keyframes scrollWords {
@@ -49,7 +41,7 @@
         transform: translateY(0%);
       }
       100% {
-        transform: translateY(-100%);
+        transform: translateY(-50%); /* половина, т.к. дублируем список */
       }
     }
   </style>
@@ -61,6 +53,13 @@
       <div class="word">Мир</div>
       <div class="word">HTML</div>
       <div class="word">CSS</div>
+      <div class="word">Анимация</div>
+      <!-- Повтор для плавности -->
+      <div class="word">Привет</div>
+      <div class="word">Мир</div>
+      <div class="word">HTML</div>
+      <div class="word">CSS</div>
+      <div class="word">Анимация</div>
     </div>
   </div>
 </body>
